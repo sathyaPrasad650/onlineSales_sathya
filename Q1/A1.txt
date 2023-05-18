@@ -5,3 +5,20 @@ JOIN salaries s ON e.ID = s.EMP_ID
 GROUP BY d.NAME
 ORDER BY AVG_MONTHLY_SALARY 
 LIMIT 3;
+
+
+-----------------------------------------------------------------------
+
+SELECT d.NAME AS DEPT_NAME, AVG(s.AMT_USD) AS AVG_MONTHLY_SALARY: This line selects the department name (d.NAME) from the "departments" table and calculates the average of the salary amount (s.AMT_USD) from the "salaries" table. The AS keyword is used to assign aliases to the selected columns, renaming d.NAME as DEPT_NAME and AVG(s.AMT_USD) as AVG_MONTHLY_SALARY.
+
+FROM departments d: This line specifies that the data is retrieved from the "departments" table and assigns the table an alias d to be referenced later in the query.
+
+JOIN employees e ON d.ID = e.DEPT_ID: This line joins the "departments" table (d) with the "employees" table (e) based on the condition that the ID column in the "departments" table is equal to the DEPT_ID column in the "employees" table. This allows the query to retrieve the relevant data by linking the departments and employees based on their respective IDs.
+
+JOIN salaries s ON e.ID = s.EMP_ID: This line further joins the previously joined tables (d and e) with the "salaries" table (s) based on the condition that the ID column in the "employees" table is equal to the EMP_ID column in the "salaries" table. This completes the join operation and connects the salaries to their respective employees and departments.
+
+GROUP BY d.NAME: This line groups the resulting data based on the department name (d.NAME). This allows the query to calculate the average monthly salary for each department.
+
+ORDER BY AVG_MONTHLY_SALARY: This line orders the grouped data by the calculated average monthly salary (AVG_MONTHLY_SALARY) in ascending order. This means the departments with lower average salaries will appear first.
+
+LIMIT 3: This line limits the output of the query to only the first three rows, thus retrieving the top three departments with the lowest average monthly salaries.
